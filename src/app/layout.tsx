@@ -1,5 +1,7 @@
 import Providers from "@/lib/Providers/Providers";
 import { Metadata } from "next";
+import "./globals.css";
+
 
 export const metadata: Metadata = {
   title: 'The-Missing-Place',
