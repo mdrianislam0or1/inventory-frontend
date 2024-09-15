@@ -1,14 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// Import jwtDecode for token decoding
 'use client'
-
 import Navbar from "@/components/Navigation/Navbar/Navbar";
 import { userLogin } from "@/services/actions/login";
-import { storeUserInfo } from "@/services/auth.service";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { decodedToken } from "@/utils/jwt";
+import { useRouter } from "next/navigation";
 
 export type FormValues = {
     email: string;
@@ -44,8 +43,6 @@ export default function Login() {
         return Object.keys(newErrors).length === 0;
     };
 
-
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!validateForm()) return;
@@ -54,7 +51,14 @@ export default function Login() {
         try {
             const res = await userLogin(formData);
             if (res?.token) {
-                storeUserInfo({ accessToken: res?.token });
+                // Decode the token to get user info
+                const decoded = decodedToken(res.token);
+
+                // Store the token and user info in localStorage
+                localStorage.setItem("token", res.token);
+                localStorage.setItem("user", JSON.stringify(decoded));
+
+                // Redirect to dashboard
                 router.push("/dashboard");
             }
         } catch (error: any) {
@@ -92,9 +96,7 @@ export default function Login() {
                                     placeholder="Username or Email address"
                                 />
                                 {errors.email && (
-                                    <p className="text-sm text-red-600">
-                                        {errors.email}
-                                    </p>
+                                    <p className="text-sm text-red-600">{errors.email}</p>
                                 )}
                             </div>
                             <div>
@@ -136,9 +138,18 @@ export default function Login() {
                                 Sign up
                             </Link>
                         </div>
+                        <div className="text-sm text-center">
+                            Forget Password account?
+                            <Link
+                                href="/send-otp"
+                                className="font-medium text-indigo-600 hover:text-indigo-500"
+                            >
+                                Forget Password
+                            </Link>
+                        </div>
                     </form>
                 </div>
             </div>
         </>
-    )
+    );
 }

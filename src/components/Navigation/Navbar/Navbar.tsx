@@ -6,10 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
-  // const AuthButton = dynamic(
-  //   () => import("@/components/UI/AuthButton/AuthButton"),
-  //   { ssr: false }
-  // );
+  const AuthButton = dynamic(
+    () => import("@/components/Interface/AuthButton/AuthButton"),
+    { ssr: false }
+  );
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -75,11 +75,11 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          {/* <div className="hidden md:block">
+          <div className="hidden md:block">
             <div className="ml-4 flex items-center md:ml-6">
               <AuthButton />
             </div>
-          </div> */}
+          </div>
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={toggleMobileMenu}
@@ -137,6 +137,7 @@ const Navbar = () => {
                 Register
               </p>
             </Link>
+
             <Link href="/foundItem">
               <p className="text-gray-700 hover:text-black block px-3 py-2 rounded-md text-base font-medium">
                 Found Item
@@ -155,9 +156,9 @@ const Navbar = () => {
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-5">
-              {/* <div className="flex-shrink-0">
+              <div className="flex-shrink-0">
                 <AuthButton />
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
