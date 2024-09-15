@@ -4,7 +4,7 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-  title: 'The-Missing-Place',
+  title: 'Inventory Management System',
   description: "invetory soft management system "
 };
 
