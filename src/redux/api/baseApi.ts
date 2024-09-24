@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { axiosBaseQuery } from "@/helpers/axios/axiosBaseQuery";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { tagTypesList } from "../tagTypes/tagTypes";
-import { axiosBaseQuery } from "@/helpers/axios/axiosBaseQuery";
 
 export const baseApi = createApi({
     reducerPath: "api",

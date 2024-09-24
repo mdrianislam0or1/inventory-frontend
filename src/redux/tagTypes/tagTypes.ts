@@ -1,6 +1,6 @@
 export enum tagTypes {
     allClaim = "allClaim",
-    profileData = "profileData",
+    userProfile = "userProfile",
     lostData = "lostData",
     foundData = "foundData",
     foundItemCategoryData = "foundItemCategoryData",
@@ -10,6 +10,6 @@ export const tagTypesList = [
     tagTypes.allClaim,
     tagTypes.foundData,
     tagTypes.lostData,
-    tagTypes.profileData,
+    tagTypes.userProfile,
     tagTypes.foundItemCategoryData,
 ];

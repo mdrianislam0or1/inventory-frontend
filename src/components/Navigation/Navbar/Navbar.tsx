@@ -6,17 +6,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
-  const AuthButton = dynamic(
-    () => import("@/components/Interface/AuthButton/AuthButton"),
-    { ssr: false }
-  );
+  // Dynamic import of AuthButton to avoid SSR issues
+  const AuthButton = dynamic(() => import("@/components/Interface/AuthButton/AuthButton"), { ssr: false });
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Toggle function for mobile menu
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setIsMobileMenuOpen((prevState) => !prevState);
   };
-
   return (
     <nav className="bg-gray-100 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +60,7 @@ const Navbar = () => {
                     Found Item
                   </p>
                 </Link>
-                <Link href="/profile">
+                <Link href="/user-profile">
                   <p className="text-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">
                     My Profile
                   </p>

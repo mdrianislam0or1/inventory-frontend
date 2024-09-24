@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { authKey } from "@/constants/authKey";
 import { IGenericErrorMessage, ResponseSuccessType } from "@/types";
 import { getFromLocalStorage } from "@/utils/localStorage";

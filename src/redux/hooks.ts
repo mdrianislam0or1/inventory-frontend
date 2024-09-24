@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "./store";
