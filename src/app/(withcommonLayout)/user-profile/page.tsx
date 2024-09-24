@@ -7,6 +7,8 @@ export default function UserProfile() {
     // Use the query hook to fetch the user profile data
     const { data, error, isLoading } = useGetUserProfileQuery({});
 
+
+    console.log(data)
     if (isLoading) return <div>Loading...</div>;
 
     if (error) {
